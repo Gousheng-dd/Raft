@@ -1,0 +1,55 @@
+version: '1'
+
+services:
+  server0:
+    build: 
+      context: .
+      dockerfile: Dockerfile-server
+      args: 
+        SERVER_IDX: 0
+    ports:
+      - "8000:8080"
+    container_name: server0
+  server1:
+    build: 
+      context: .
+      dockerfile: Dockerfile-server
+      args: 
+        SERVER_IDX: 1
+    ports:
+      - "8001:8080"
+    container_name: server1
+  server2:
+    build: 
+      context: .
+      dockerfile: Dockerfile-server
+      args: 
+        SERVER_IDX: 2
+    ports:
+      - "8002:8080"
+    container_name: server2
+  server3:
+    build: 
+      context: .
+      dockerfile: Dockerfile-server
+      args: 
+        SERVER_IDX: 3
+    ports:
+      - "8003:8080"
+    container_name: server3
+  server4:
+    build: 
+      context: .
+      dockerfile: Dockerfile-server
+      args: 
+        SERVER_IDX: 4
+    ports:
+      - "8004:8080"
+    container_name: server4
+  client:
+    build: 
+      context: .
+      dockerfile: Dockerfile-client
+    ports:
+      - "8010:8080"
+    container_name: client

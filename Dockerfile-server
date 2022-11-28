@@ -1,0 +1,15 @@
+FROM golang:latest
+
+ARG SERVER_IDX
+ENV SERVER_IDX ${SERVER_IDX}
+
+ENV GOPATH /go
+ENV PATH $GOPATH/bin:$PATH
+RUN mkdir -p "$GOPATH/src/LRaft" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+WORKDIR $GOPATH/src/LRaft
+
+COPY . .
+
+RUN go build -o /usr/local/bin/server LRaft/kv_server
+
+CMD server $SERVER_IDX
